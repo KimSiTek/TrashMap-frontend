@@ -3,7 +3,7 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import { useState, useEffect } from 'react';
 
 const containerStyle = {
-  width: '1000%',
+  width: '100vw',
   height: '80vh',
 };
 
@@ -14,28 +14,72 @@ const dummyBins = [
 
 function TrashMap({ areaId }) {
   const [bins, setBins] = useState([]);
+  const [userLocation, setUserLocation] = useState[null];
+  const [map, setMap] = useState(null);
 
   useEffect(() => {
     setBins(dummyBins); // 나중엔 Spring API와 연결
-  }, [areaId]);
+    
+    const watchId = navigator.geolocation.watchPosition(
+        (position) => {
+            const current = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+            };
 
-  const center = dummyBins[0];
+            setUserLocation(current);
+            if(map){
+                map.panTo(current);
+            }
+        },
+        (error) => {
+            console.error('실시간 위치 추적 실패:', error);
+        },
+
+        {
+            enableHighAccuracy : true,
+            timeout: 5000,
+            maximumAge: 0,
+        }
+    );
+
+    return () => {
+        navigator.geolocation.clearWatch(watchId);
+    };
+  }, [map,areaId]);
+
+  const handleMapLoad = (mapInstance) => {
+    setMap(mapInstance);
+  };
+
+  const defaultCenter = dummyBins[0];
 
   return (
     <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
-      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={15}>
-        {bins.map((bin) => (
-          <Marker
-            key={bin.id}
-            position={{ lat: bin.lat, lng: bin.lng }}
-            icon={
-              bin.status === 'full'
-                ? 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
-                : 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
-            }
-          />
-        ))}
-      </GoogleMap>
+      <GoogleMap mapContainerStyle={containerStyle} 
+                    center={userLocation || defaultCenter}
+                    zoom={15}
+                    onLoad = {handleMapLoad} >
+                    
+                    {userLocation && (
+                        <Marker
+                            position = {userLocation}
+                            icon = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                        />
+                    )}
+
+                    {bins.map((bin) => (
+                    <Marker
+                        key={bin.id}
+                        position={{ lat: bin.lat, lng: bin.lng }}
+                        icon={
+                            bin.status === 'full'
+                            ? 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+                            : 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                        }
+                    />
+                ))}
+        </GoogleMap>
     </LoadScript>
   );
 }
