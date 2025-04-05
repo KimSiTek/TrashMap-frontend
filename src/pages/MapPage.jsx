@@ -6,6 +6,10 @@ function MapPage() {
   const [params] = useSearchParams();
   const areaId = params.get('id');
 
+  if(!areaId) {
+    return <div>접근 경로가 잘못되었습니다.</div>
+  }
+
   return (
     <div>
       <h2> Where is it? </h2>
