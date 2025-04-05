@@ -8,7 +8,7 @@ function MapPage() {
 
   return (
     <div>
-      <h2>📍 쓰레기통 위치 안내</h2>
+      <h2> Where is it? </h2>
       <TrashMap areaId={areaId} />
     </div>
   );
