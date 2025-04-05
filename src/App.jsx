@@ -7,7 +7,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/map" element={<MapPage />} />
-
+        <Route path ="/" element = {<HomePage />} />
       </Routes>
     </BrowserRouter>
   );
