@@ -14,7 +14,7 @@ const dummyBins = [
 
 function TrashMap({ areaId }) {
   const [bins, setBins] = useState([]);
-  const [userLocation, setUserLocation] = useState[null];
+  const [userLocation, setUserLocation] = useState(null);
   const [map, setMap] = useState(null);
 
   useEffect(() => {
