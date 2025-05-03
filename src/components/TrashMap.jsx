@@ -38,7 +38,7 @@ function TrashMap({ areaId }) {
         }
     );
 
-    fetchTrashBins().then(setBins);
+    fetchTrashBins.then(setBins);
 
     return () => {
         navigator.geolocation.clearWatch(watchId);
@@ -49,7 +49,7 @@ function TrashMap({ areaId }) {
     setMap(mapInstance);
   };
 
-  const defaultCenter = {lat : 37.4, lng: 127.1};
+  const defaultCenter = {lat : 37.4, lng: 127.1}
 
   return (
     <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
@@ -65,17 +65,20 @@ function TrashMap({ areaId }) {
                         />
                     )}
 
-                    {bins.map((bin) => (
-                    <Marker
-                        key={bin.id}
-                        position={{ lat: bin.lat, lng: bin.lng }}
-                        icon={
+                    {bins.map((bin) => {
+                      console.log("📍 쓰레기통 마커 생성:", bin);
+                      return (
+                        <Marker
+                          key={bin.id}
+                          position={{ lat: bin.lat, lng: bin.lng }}
+                          icon={
                             bin.status === 'full'
-                            ? 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
-                            : 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
-                        }
-                    />
-                ))}
+                              ? 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+                              : 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                          }
+                        />
+                      );
+                    })}
         </GoogleMap>
     </LoadScript>
   );
