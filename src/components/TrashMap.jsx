@@ -38,7 +38,10 @@ function TrashMap({ areaId }) {
         }
     );
 
-    fetchTrashBins.then(setBins);
+    fetchTrashBins.then(data => {
+      console.log("가져온 쓰레기통 목록:", data);
+      setBins(data);
+    });
 
     return () => {
         navigator.geolocation.clearWatch(watchId);
@@ -73,8 +76,8 @@ function TrashMap({ areaId }) {
                           position={{ lat: bin.lat, lng: bin.lng }}
                           icon={
                             bin.status === 'full'
-                              ? 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
-                              : 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                              ? 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
+                              : 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
                           }
                         />
                       );
