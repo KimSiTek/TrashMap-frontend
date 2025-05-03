@@ -1,16 +1,12 @@
 // src/components/TrashMap.jsx
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import { useState, useEffect } from 'react';
+import { fetchTrashBins } from '../api/trashApi';
 
 const containerStyle = {
   width: '100vw',
   height: '80vh',
 };
-
-const dummyBins = [
-  { id: 'bin1', lat: 37.4021, lng: 127.1083, status: 'available' },
-  { id: 'bin2', lat: 37.4030, lng: 127.1090, status: 'full' },
-];
 
 function TrashMap({ areaId }) {
   const [bins, setBins] = useState([]);
@@ -18,7 +14,6 @@ function TrashMap({ areaId }) {
   const [map, setMap] = useState(null);
 
   useEffect(() => {
-    setBins(dummyBins); // 나중엔 Spring API와 연결
     
     const watchId = navigator.geolocation.watchPosition(
         (position) => {
@@ -43,6 +38,8 @@ function TrashMap({ areaId }) {
         }
     );
 
+    fetchTrashBins().then(setBins);
+
     return () => {
         navigator.geolocation.clearWatch(watchId);
     };
@@ -52,7 +49,7 @@ function TrashMap({ areaId }) {
     setMap(mapInstance);
   };
 
-  const defaultCenter = dummyBins[0];
+  const defaultCenter = {lat : 37.4, lng: 127.1};
 
   return (
     <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
