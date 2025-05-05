@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://trashmap-backend-production.up.railway.app/';
+const BASE_URL = 'https://trashmap-backend-production.up.railway.app/api/trashbins';
 
 export async function fetchTrashBins() {
   try {
