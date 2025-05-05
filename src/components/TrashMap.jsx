@@ -38,6 +38,7 @@ function TrashMap({ areaId }) {
     // ✅ fetchTrashBins 실행
     fetchTrashBins().then((data) => {
       console.log("🗑️ 가져온 쓰레기통 목록:", data);
+      console.log("📍 쓰레기통 마커 생성:", bin);
       setBins(data);
     });
   
@@ -68,7 +69,6 @@ function TrashMap({ areaId }) {
                     )}
 
                     {bins.map((bin) => {
-                      console.log("📍 쓰레기통 마커 생성:", bin);
                       return (
                         <Marker
                           key={bin.id}
