@@ -14,39 +14,38 @@ function TrashMap({ areaId }) {
   const [map, setMap] = useState(null);
 
   useEffect(() => {
-    
     const watchId = navigator.geolocation.watchPosition(
-        (position) => {
-            const current = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude,
-            };
-
-            setUserLocation(current);
-            if(map){
-                map.panTo(current);
-            }
-        },
-        (error) => {
-            console.error('실시간 위치 추적 실패:', error);
-        },
-
-        {
-            enableHighAccuracy : true,
-            timeout: 5000,
-            maximumAge: 0,
+      (position) => {
+        const current = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        setUserLocation(current);
+        if (map) {
+          map.panTo(current);
         }
+      },
+      (error) => {
+        console.error('실시간 위치 추적 실패:', error);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0,
+      }
     );
-
-    fetchTrashBins.then(data => {
-      console.log("가져온 쓰레기통 목록:", data);
+  
+    // ✅ fetchTrashBins 실행
+    fetchTrashBins().then((data) => {
+      console.log("🗑️ 가져온 쓰레기통 목록:", data);
       setBins(data);
     });
-
+  
     return () => {
-        navigator.geolocation.clearWatch(watchId);
+      navigator.geolocation.clearWatch(watchId);
     };
-  }, [map,areaId]);
+  }, [map, areaId]);
+  
 
   const handleMapLoad = (mapInstance) => {
     setMap(mapInstance);
