@@ -35,12 +35,14 @@ function TrashMap({ areaId }) {
       }
     );
   
-    // ✅ fetchTrashBins 실행
     fetchTrashBins().then((data) => {
       console.log("🗑️ 가져온 쓰레기통 목록:", data);
-      console.log("📍 쓰레기통 마커 생성:", bin);
+      data.forEach((bin) => {
+        console.log("📍 쓰레기통 마커 생성:", bin); // 여기에 있어야 함
+      });
       setBins(data);
     });
+    
   
     return () => {
       navigator.geolocation.clearWatch(watchId);
