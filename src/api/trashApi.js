@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL = 'https://trash-map-eta.vercel.app/map?id=tancheon01';
 
 export async function fetchTrashBins() {
   try {
