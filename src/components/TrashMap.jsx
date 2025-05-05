@@ -37,11 +37,13 @@ function TrashMap({ areaId }) {
   
     fetchTrashBins().then((data) => {
       console.log("🗑️ 가져온 쓰레기통 목록:", data);
+      // 여기서 각 bin에 대해 로그 출력
       data.forEach((bin) => {
-        console.log("📍 쓰레기통 마커 생성:", bin); // 여기에 있어야 함
-      });
+        console.log("📍 쓰레기통 마커 생성:", bin);
+      }); 
       setBins(data);
     });
+    
     
   
     return () => {
