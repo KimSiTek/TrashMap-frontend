@@ -64,7 +64,7 @@ function TrashMap({ areaId }) {
                     {userLocation && (
                         <Marker
                             position = {userLocation}
-                            icon = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                            icon = "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
                         />
                     )}
 
