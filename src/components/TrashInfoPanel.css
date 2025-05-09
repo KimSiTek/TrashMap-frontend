@@ -7,7 +7,7 @@
     max-height: 90vh;
     overflow-y: auto;
     background-color: #fff;
-    color: #000; /* ✅ 글씨 검정색 */
+    color: #000; 
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     padding: 24px;
@@ -37,14 +37,34 @@
     cursor: pointer;
   }
   
-  
   .image-preview {
     margin-top: 16px;
   }
   
   .image-preview img {
     width: 100%;
+    max-height: 200px;
     border-radius: 8px;
     object-fit: cover;
+  }
+  
+  /* 모바일 대응 */
+  @media (max-width: 768px) {
+    .trash-info-panel {
+      position: fixed;
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 45vh;
+      max-height: none;
+      border-radius: 16px 16px 0 0;
+      padding: 20px;
+    }
+  
+    .image-preview img {
+      max-height: 150px;
+    }
   }
   
