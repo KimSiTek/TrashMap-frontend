@@ -55,32 +55,35 @@ function TrashMap({ areaId }) {
   return (
     <>
       <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={defaultCenter}
-          zoom={15}
-          onLoad={handleMapLoad}
-        >
-          {userLocation && (
-            <Marker
-              position={userLocation}
-              icon="https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-            />
-          )}
+      <GoogleMap
+  mapContainerStyle={containerStyle}
+  zoom={15}
+  onLoad={(mapInstance) => {
+    setMap(mapInstance);
+    mapInstance.panTo(defaultCenter); // ✅ 처음에만 이동
+  }}
+>
+  {userLocation && (
+    <Marker
+      position={userLocation}
+      icon="https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+    />
+  )}
 
-          {bins.map((bin) => (
-            <Marker
-              key={bin.id}
-              position={{ lat: bin.lat, lng: bin.lng }}
-              icon={
-                bin.status === 'full'
-                  ? 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
-                  : 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
-              }
-              onClick={() => setSelectedBin(bin)}
-            />
-          ))}
-        </GoogleMap>
+  {bins.map((bin) => (
+    <Marker
+      key={bin.id}
+      position={{ lat: bin.lat, lng: bin.lng }}
+      icon={
+        bin.status === 'full'
+          ? 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
+          : 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
+      }
+      onClick={() => setSelectedBin(bin)}
+    />
+  ))}
+</GoogleMap>
+
       </LoadScript>
 
       {selectedBin && (
