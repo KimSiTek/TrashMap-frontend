@@ -37,7 +37,6 @@ function TrashMap({ areaId }) {
   
     fetchTrashBins().then((data) => {
       console.log("🗑️ 가져온 쓰레기통 목록:", data);
-      // 여기서 각 bin에 대해 로그 출력
       data.forEach((bin) => {
         console.log("📍 쓰레기통 마커 생성:", bin);
       }); 
@@ -56,7 +55,7 @@ function TrashMap({ areaId }) {
     setMap(mapInstance);
   };
 
-  const defaultCenter = {lat : 37.4, lng: 127.1}
+  const defaultCenter = {lat : 37.3898, lng: 126.9595}
 
   return (
     <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
