@@ -28,11 +28,15 @@
     position: absolute;
     top: 12px;
     right: 16px;
-    font-size: 20px;
+    font-size: 22px;
     background: none;
     border: none;
+    color: #000;
+    font-weight: bold;
+    z-index: 1001;
     cursor: pointer;
   }
+  
   
   .image-preview {
     margin-top: 16px;
