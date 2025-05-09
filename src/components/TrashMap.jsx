@@ -2,6 +2,7 @@
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import { useState, useEffect } from 'react';
 import { fetchTrashBins } from '../api/trashApi';
+import TrashMarker from './TrashMarker';
 
 const containerStyle = {
   width: '100vw',
@@ -71,19 +72,9 @@ function TrashMap({ areaId }) {
                         />
                     )}
 
-                    {bins.map((bin) => {
-                      return (
-                        <Marker
-                          key={bin.id}
-                          position={{ lat: bin.lat, lng: bin.lng }}
-                          icon={
-                            bin.status === 'full'
-                              ? 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
-                              : 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
-                          }
-                        />
-                      );
-                    })}
+                    {bins.map((bin) => (
+                      <TrashMarker key = {bin.id} bin={bin} />
+                    ))}
         </GoogleMap>
     </LoadScript>
   );
