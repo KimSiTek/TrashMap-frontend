@@ -21,8 +21,8 @@ function TrashMarker({ bin }) {
           position={{ lat: bin.lat, lng: bin.lng }}
           onCloseClick={() => setShowInfo(false)}
         >
-          <div>
-            <h4>쓰레기통 정보</h4>
+          <div style={{color:'black', fontSize: '14px'}}>
+            <h4 style={{color:'black'}}>쓰레기통 정보</h4>
             <p><strong>상태:</strong> {bin.status}</p>
             <p><strong>설명:</strong> {bin.description || '없음'}</p>
           </div>
