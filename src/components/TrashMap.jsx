@@ -60,7 +60,7 @@ function TrashMap({ areaId }) {
   return (
     <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
       <GoogleMap mapContainerStyle={containerStyle} 
-                    center={userLocation || defaultCenter}
+                    center={defaultCenter}
                     zoom={15}
                     onLoad = {handleMapLoad} >
                     
