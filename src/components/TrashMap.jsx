@@ -94,3 +94,4 @@ function TrashMap({ areaId }) {
 }
 
 export default TrashMap;
+
