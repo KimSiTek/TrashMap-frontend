@@ -10,15 +10,19 @@ function TrashInfoPanel({ bin, onClose }) {
   const [imageUrl, setImageUrl] = useState(null);
 
   useEffect(() => {
-    const fetchImage = async () => {
+    const fetchImages = async () => {
       try {
-        const res = await axios.get(`https://trashmap-backend.up.railway.app/api/bin/${bin.id}`);
-        setImageUrl(res.data.imageUrl);
+        const res = await axios.get(`https://trashmap-backend-production.up.railway.app/api/images/${bin.id}`);
+        if (res.data.length > 0) {
+          setExistingImageUrl(
+            `https://trashmap-backend-production.up.railway.app/api/files/${res.data[0].imagePath}`
+          );
+        }
       } catch (err) {
         console.error("이미지 불러오기 실패:", err);
       }
     };
-    fetchImage();
+    fetchImages();
   }, [bin.id]);
 
   const handleUpload = async () => {
@@ -52,7 +56,7 @@ function TrashInfoPanel({ bin, onClose }) {
 
 
 
-  
+
   return (
     <div className="trash-info-panel">
       <button className="close-button" onClick={onClose}>×</button>
