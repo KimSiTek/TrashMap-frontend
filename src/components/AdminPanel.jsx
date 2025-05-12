@@ -7,9 +7,10 @@ export default function AdminPanel() {
   useEffect(() => {
     axios.get("https://trashmap-backend-production.up.railway.app/api/images")
       .then(res => {
-        const fullPaths = res.data.map(filename => 
-          `https://trashmap-backend-production.up.railway.app/api/files/${filename}`
-        );
+        const fullPaths = res.data.map(filename => {
+          const clean = filename.replace("/uploads/", "").replace("uploads/", "");
+          return `https://trashmap-backend-production.up.railway.app/api/files/${clean}`;
+        });
         setImages(fullPaths);
       })
       .catch(err => console.error(err));
