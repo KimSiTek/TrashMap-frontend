@@ -66,9 +66,9 @@ function TrashInfoPanel({ bin, onClose }) {
       <p><strong>설명:</strong> {bin.description || '없음'}</p>
       <h2>{bin.name}</h2>
   
-      {bin.image_url ? (
+      {bin.imageUrl ? (
         <img
-          src={`https://trashmap-backend-production.up.railway.app${bin.image_url}`}
+          src={`https://trashmap-backend-production.up.railway.app${bin.imageUrl}`}
           alt="쓰레기통 초기 상태"
           style={{ maxWidth: '100%' }}
         />
