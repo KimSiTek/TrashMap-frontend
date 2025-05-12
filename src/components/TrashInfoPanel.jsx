@@ -42,22 +42,7 @@ function TrashInfoPanel({ bin, onClose }) {
       <p><strong>상태:</strong> {bin.status === 'full' ? '꽉 참' : '비어 있음'}</p>
       <p><strong>설명:</strong> {bin.description || '없음'}</p>
       <h2>{bin.name}</h2>
-
-      <img
-        src={`/images/${bin.id}.jpg`}
-        alt="쓰레기통 초기 상태"
-        style={{ 
-          width : '200px',
-          height: 'auto',
-          borderRadius: '8px'
-        }}
-        onError={(e) => {
-          e.target.style.display = 'none';
-        }}
-      />
-
       <button onClick={() => setShowUpload(true)}>쓰레기통 상태 신고</button>
-
       {showUpload && (
         <div className="upload-section">
           <input
@@ -78,6 +63,19 @@ function TrashInfoPanel({ bin, onClose }) {
           />
         </div>
       )}
+
+      <img
+        src={`/images/${bin.id}.jpg`}
+        alt="쓰레기통 초기 상태"
+        style={{ 
+          width : '200px',
+          height: 'auto',
+          borderRadius: '8px'
+        }}
+        onError={(e) => {
+          e.target.style.display = 'none';
+        }}
+      />
     </div>
   );
 }
