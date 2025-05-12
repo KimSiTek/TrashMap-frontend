@@ -15,6 +15,7 @@ function TrashInfoPanel({ bin, onClose }) {
 
     const formData = new FormData();
     formData.append("file", selectedFile);
+    formData.append("binName", bin.id);
 
     try {
       const res = await axios.post(
