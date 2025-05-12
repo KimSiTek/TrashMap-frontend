@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MapPage from './pages/MapPage';
 import HomePage from './pages/HomePage';
+import AdminPanel from './components/AdminPanel';
 
 function App() {
   return (
