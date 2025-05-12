@@ -7,13 +7,7 @@ export default function AdminPanel() {
   useEffect(() => {
     axios.get("https://trashmap-backend-production.up.railway.app/api/images")
       .then(res => {
-        const fullPaths = res.data.map(item => {
-          const filename = item.imagePath || "";  // 문자열 보장
-          const clean = filename.replace("/uploads/", "").replace("uploads/", "");
-          return `https://trashmap-backend-production.up.railway.app/api/files/${clean}`;
-        });
-        
-        setImages(fullPaths);
+        setImages(res.data); // 이제 전체 객체 저장
       })
       .catch(err => console.error(err));
   }, []);
@@ -21,15 +15,34 @@ export default function AdminPanel() {
   return (
     <div>
       <h2>신고된 사진 목록</h2>
-      {images.map((url, idx) => (
-        <img
-          key={idx}
-          src={url}
-          width="300px"
-          alt={`신고사진-${idx}`}
-          style={{ margin: "10px", border: "1px solid #ccc" }}
-        />
-      ))}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+        {images.map((item, idx) => {
+          const filename = item.imagePath.replace(/^\/?uploads\//, "");
+          const imageUrl = `https://trashmap-backend-production.up.railway.app/api/files/${filename}`;
+          const uploadedDate = new Date(item.uploadedAt).toLocaleString();
+
+          return (
+            <div key={idx} style={{ width: "220px" }}>
+              <img
+                src={imageUrl}
+                alt={`신고사진-${idx}`}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  border: "1px solid #ccc",
+                  borderRadius: "8px"
+                }}
+              />
+              <p style={{ fontSize: "14px", margin: "6px 0 2px 0" }}>
+                🗑️ <strong>{item.trashBinName}</strong>
+              </p>
+              <p style={{ fontSize: "13px", color: "#555" }}>
+                ⏰ {uploadedDate}
+              </p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
