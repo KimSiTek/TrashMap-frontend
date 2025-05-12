@@ -63,7 +63,7 @@ function TrashInfoPanel({ bin, onClose }) {
           />
         </div>
       )}
-      <br></br><br></br>
+      <br />
       <img
         src={`/images/${bin.id}.jpg`}
         alt="쓰레기통 초기 상태"
