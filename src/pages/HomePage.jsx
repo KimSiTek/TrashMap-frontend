@@ -9,11 +9,21 @@ function HomePage() {
   };
 
   const handleHowToUse = () => {
-    navigate('/info'); // '/info'는 사용법 페이지 경로라고 가정
+    navigate('/info');
   };
 
   return (
-    <div style={{ padding: '2rem', position: 'relative', minHeight: '100vh' }}>
+    <div
+      style={{
+        position: 'relative',
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center', // 세로 가운데
+        alignItems: 'center',     // 가로 가운데
+        backgroundColor: '#f8f8f8',
+      }}
+    >
       {/* 우상단 사용법 버튼 */}
       <button
         onClick={handleHowToUse}
@@ -28,8 +38,17 @@ function HomePage() {
         사용법
       </button>
 
-      <h1>Trash Map</h1>
-      <button onClick={handleClick}>Garbage Location</button>
+      <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>Trash Map</h1>
+      <button
+        onClick={handleClick}
+        style={{
+          padding: '0.75rem 1.5rem',
+          fontSize: '1.2rem',
+          cursor: 'pointer',
+        }}
+      >
+        Garbage Location
+      </button>
     </div>
   );
 }
