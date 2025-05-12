@@ -21,9 +21,6 @@ function TrashInfoPanel({ bin, onClose }) {
       const res = await axios.post(
         "https://trashmap-backend-production.up.railway.app/api/upload",
         formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
       );
 
       const filename = res.data; // UUID_파일이름.jpg
