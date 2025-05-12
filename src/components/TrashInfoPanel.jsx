@@ -16,7 +16,7 @@ function TrashInfoPanel({ bin, onClose }) {
     formData.append("file", selectedFile);
 
     try {
-      const res = await axios.post("https://trashmap-backend-production.up.railway.app/api/trashbins", formData, {
+      const res = await axios.post("https://trashmap-backend-production.up.railway.app/api/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert("업로드 성공");
