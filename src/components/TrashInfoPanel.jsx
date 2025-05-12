@@ -1,64 +1,38 @@
 import './TrashInfoPanel.css';
 import { useState } from 'react';
-import {useEffect, useState} from 'react';
 import axios from 'axios';
 
 function TrashInfoPanel({ bin, onClose }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [showUpload, setShowUpload] = useState(false);
   const [uploadedImageUrl, setUploadedImageUrl] = useState(null); // 업로드 후 미리보기용
-  const [imageUrl, setImageUrl] = useState(null);
 
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const res = await axios.get(`https://trashmap-backend-production.up.railway.app/api/images/${bin.id}`);
-        if (res.data.length > 0) {
-          setExistingImageUrl(
-            `https://trashmap-backend-production.up.railway.app/api/files/${res.data[0].imagePath}`
-          );
-        }
-      } catch (err) {
-        console.error("이미지 불러오기 실패:", err);
-      }
-    };
-    fetchImages();
-  }, [bin.id]);
-
-
-
-  
   const handleUpload = async () => {
     if (!selectedFile) {
-      alert("파일을 선택해주세요.");
+      alert('파일을 선택해주세요.');
       return;
     }
 
     const formData = new FormData();
-    formData.append("file", selectedFile);
-    formData.append("binName", bin.id);
+    formData.append('file', selectedFile);
+    formData.append('binName', bin.id);
 
     try {
       const res = await axios.post(
-        "https://trashmap-backend-production.up.railway.app/api/upload",
-        formData,
+        'https://trashmap-backend-production.up.railway.app/api/upload',
+        formData
       );
 
       const filename = res.data; // UUID_파일이름.jpg
       const imageUrl = `https://trashmap-backend-production.up.railway.app/api/files/${filename}`;
       setUploadedImageUrl(imageUrl);
-      alert("업로드 성공");
+      alert('업로드 성공');
       setShowUpload(false);
     } catch (err) {
-      alert("업로드 실패");
+      alert('업로드 실패');
       console.error(err);
     }
   };
-
-
-
-
-
 
   return (
     <div className="trash-info-panel">
@@ -68,19 +42,19 @@ function TrashInfoPanel({ bin, onClose }) {
       <p><strong>상태:</strong> {bin.status === 'full' ? '꽉 참' : '비어 있음'}</p>
       <p><strong>설명:</strong> {bin.description || '없음'}</p>
       <h2>{bin.name}</h2>
-  
-      {bin.imageUrl ? (
-        <img
-          src={`https://trashmap-backend-production.up.railway.app${bin.imageUrl}`}
-          alt="쓰레기통 초기 상태"
-          style={{ maxWidth: '100%' }}
-        />
-      ) : (
-        <p>초기 상태 이미지가 없습니다.</p>
-      )}
-  
+
+      {/* ✅ public/images 방식으로 정적 이미지 표시 */}
+      <img
+        src={`/images/${bin.id}.jpg`}
+        alt="쓰레기통 초기 상태"
+        style={{ maxWidth: '100%' }}
+        onError={(e) => {
+          e.target.style.display = 'none';
+        }}
+      />
+
       <button onClick={() => setShowUpload(true)}>쓰레기통 상태 신고</button>
-  
+
       {showUpload && (
         <div className="upload-section">
           <input
@@ -91,11 +65,15 @@ function TrashInfoPanel({ bin, onClose }) {
           <button onClick={handleUpload}>업로드</button>
         </div>
       )}
-  
+
       {uploadedImageUrl && (
         <div className="image-preview">
           <img
-            src={uploadedImageUrl.startsWith('http') ? uploadedImageUrl : `https://trashmap-backend-production.up.railway.app/${uploadedImageUrl}`}
+            src={
+              uploadedImageUrl.startsWith('http')
+                ? uploadedImageUrl
+                : `https://trashmap-backend-production.up.railway.app/${uploadedImageUrl}`
+            }
             alt="업로드된 사진"
             width="100%"
           />
@@ -103,8 +81,6 @@ function TrashInfoPanel({ bin, onClose }) {
       )}
     </div>
   );
-  
-  
 }
 
 export default TrashInfoPanel;
