@@ -65,14 +65,19 @@ function TrashInfoPanel({ bin, onClose }) {
       <p><strong>상태:</strong> {bin.status === 'full' ? '꽉 참' : '비어 있음'}</p>
       <p><strong>설명:</strong> {bin.description || '없음'}</p>
       <h2>{bin.name}</h2>
-      {imageUrl ? (
-        <img src = {imageUrl} alt = "쓰레기통 현재 상태" style = {{maxWidth: '100%'}} />
+  
+      {bin.image_url ? (
+        <img
+          src={`https://trashmap-backend-production.up.railway.app${bin.image_url}`}
+          alt="쓰레기통 초기 상태"
+          style={{ maxWidth: '100%' }}
+        />
       ) : (
-        <p> 이미지를 불러들이는 중 </p>
+        <p>초기 상태 이미지가 없습니다.</p>
       )}
-      
+  
       <button onClick={() => setShowUpload(true)}>쓰레기통 상태 신고</button>
-
+  
       {showUpload && (
         <div className="upload-section">
           <input
@@ -83,7 +88,7 @@ function TrashInfoPanel({ bin, onClose }) {
           <button onClick={handleUpload}>업로드</button>
         </div>
       )}
-
+  
       {uploadedImageUrl && (
         <div className="image-preview">
           <img src={uploadedImageUrl} alt="업로드된 사진" width="100%" />
@@ -91,6 +96,7 @@ function TrashInfoPanel({ bin, onClose }) {
       )}
     </div>
   );
+  
 }
 
 export default TrashInfoPanel;
