@@ -43,7 +43,7 @@ function TrashInfoPanel({ bin, onClose }) {
       <p><strong>설명:</strong> {bin.description || '없음'}</p>
       <h2>{bin.name}</h2>
 
-      {/* ✅ public/images 방식으로 정적 이미지 표시 */}
+      {/* ✅ 정적 이미지 표시 (public/images/bin1.jpg 등) */}
       <img
         src={`/images/${bin.id}.jpg`}
         alt="쓰레기통 초기 상태"
@@ -69,11 +69,7 @@ function TrashInfoPanel({ bin, onClose }) {
       {uploadedImageUrl && (
         <div className="image-preview">
           <img
-            src={
-              uploadedImageUrl.startsWith('http')
-                ? uploadedImageUrl
-                : `https://trashmap-backend-production.up.railway.app/${uploadedImageUrl}`
-            }
+            src={uploadedImageUrl}
             alt="업로드된 사진"
             width="100%"
           />
