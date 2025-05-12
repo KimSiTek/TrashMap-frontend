@@ -7,18 +7,25 @@ export default function AdminPanel() {
   useEffect(() => {
     axios.get("https://trashmap-backend-production.up.railway.app/api/images")
       .then(res => {
-        const fullPaths = res.data.map(path => "https://trashmap-backend-production.up.railway.app" + path);
+        const fullPaths = res.data.map(filename => 
+          `https://trashmap-backend-production.up.railway.app/api/files/${filename}`
+        );
         setImages(fullPaths);
       })
       .catch(err => console.error(err));
   }, []);
-  
 
   return (
     <div>
       <h2>신고된 사진 목록</h2>
       {images.map((url, idx) => (
-        <img key={idx} src={url} width="300px" alt={`신고사진-${idx}`} style={{ margin: "10px" }} />
+        <img
+          key={idx}
+          src={url}
+          width="300px"
+          alt={`신고사진-${idx}`}
+          style={{ margin: "10px", border: "1px solid #ccc" }}
+        />
       ))}
     </div>
   );
