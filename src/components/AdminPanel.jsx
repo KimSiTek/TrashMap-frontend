@@ -5,13 +5,14 @@ export default function AdminPanel() {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/images")
+    axios.get("https://trashmap-backend-production.up.railway.app/api/images")
       .then(res => {
-        const fullPaths = res.data.map(path => "http://localhost:8080" + path);
+        const fullPaths = res.data.map(path => "https://trashmap-backend-production.up.railway.app" + path);
         setImages(fullPaths);
       })
       .catch(err => console.error(err));
   }, []);
+  
 
   return (
     <div>
