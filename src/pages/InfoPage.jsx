@@ -11,7 +11,7 @@ function InfoPage() {
 
   return (
     <div style={{ padding: '2rem', maxWidth: '800px', margin: 'auto' }}>
-      <h1>📘 TrashMap 사용법 안내</h1>
+      <h1>TrashMap 사용법 안내</h1>
       <ul style={{ lineHeight: '2' }}>
         <li>QR 코드를 스캔하거나 메인 페이지에서 위치 버튼을 누릅니다.</li>
         <li>쓰레기통의 위치와 상태를 지도로 확인할 수 있습니다.</li>
