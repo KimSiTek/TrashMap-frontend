@@ -17,31 +17,30 @@ export default function AdminPanel() {
       <h2>신고된 사진 목록</h2>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
         {images.map((item, idx) => {
-          const filename = item.imagePath.replace(/^\/?uploads\//, "");
-          const imageUrl = `https://trashmap-backend-production.up.railway.app/api/files/${filename}`;
-          const uploadedDate = new Date(item.uploadedAt).toLocaleString();
+  const filename = item.imagePath.replace(/^\/?uploads\//, "");
+  const imageUrl = `https://trashmap-backend-production.up.railway.app/api/files/${filename}`;
+  return (
+    <div key={idx} style={{ width: "220px" }}>
+      <img
+        src={imageUrl}
+        alt={`신고사진-${idx}`}
+        style={{
+          width: "100%",
+          height: "auto",
+          border: "1px solid #ccc",
+          borderRadius: "8px"
+        }}
+      />
+      <p style={{ fontSize: "14px", margin: "6px 0 2px 0" }}>
+        🗑️ <strong>{item.trashBinName}</strong>
+      </p>
+      <p style={{ fontSize: "13px", color: "#555" }}>
+        ⏰ {item.uploadedAt}
+      </p>
+    </div>
+  );
+})}
 
-          return (
-            <div key={idx} style={{ width: "220px" }}>
-              <img
-                src={imageUrl}
-                alt={`신고사진-${idx}`}
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  border: "1px solid #ccc",
-                  borderRadius: "8px"
-                }}
-              />
-              <p style={{ fontSize: "14px", margin: "6px 0 2px 0" }}>
-                쓰레기통 이름<strong>{item.trashBinName}</strong>
-              </p>
-              <p style={{ fontSize: "13px", color: "#555" }}>
-                업로드 시각{uploadedDate}
-              </p>
-            </div>
-          );
-        })}
       </div>
     </div>
   );
