@@ -91,11 +91,16 @@ function TrashInfoPanel({ bin, onClose }) {
   
       {uploadedImageUrl && (
         <div className="image-preview">
-          <img src={uploadedImageUrl} alt="업로드된 사진" width="100%" />
+          <img
+            src={uploadedImageUrl.startsWith('http') ? uploadedImageUrl : `https://trashmap-backend-production.up.railway.app/${uploadedImageUrl}`}
+            alt="업로드된 사진"
+            width="100%"
+          />
         </div>
       )}
     </div>
   );
+  
   
 }
 
