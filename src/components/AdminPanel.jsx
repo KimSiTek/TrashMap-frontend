@@ -16,6 +16,7 @@ export default function AdminPanel() {
     <div>
       <h2>신고된 사진 목록</h2>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+
         {images.map((item, idx) => {
   const filename = item.imagePath.replace(/^\/?uploads\//, "");
   const imageUrl = `https://trashmap-backend-production.up.railway.app/api/files/${filename}`;
@@ -37,6 +38,8 @@ export default function AdminPanel() {
       <p style={{ fontSize: "13px", color: "#555" }}>
         ⏰ {item.uploadedAt}
       </p>
+      console.log("🧾 서버 응답 항목:", item);
+
     </div>
   );
 })}
