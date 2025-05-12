@@ -7,10 +7,12 @@ export default function AdminPanel() {
   useEffect(() => {
     axios.get("https://trashmap-backend-production.up.railway.app/api/images")
       .then(res => {
-        const fullPaths = res.data.map(filename => {
+        const fullPaths = res.data.map(item => {
+          const filename = item.imagePath || "";  // 문자열 보장
           const clean = filename.replace("/uploads/", "").replace("uploads/", "");
           return `https://trashmap-backend-production.up.railway.app/api/files/${clean}`;
         });
+        
         setImages(fullPaths);
       })
       .catch(err => console.error(err));
