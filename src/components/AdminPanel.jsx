@@ -34,10 +34,10 @@ export default function AdminPanel() {
                 }}
               />
               <p style={{ fontSize: "14px", margin: "6px 0 2px 0" }}>
-                🗑️ <strong>{item.trashBinName}</strong>
+                쓰레기통 이름<strong>{item.trashBinName}</strong>
               </p>
               <p style={{ fontSize: "13px", color: "#555" }}>
-                ⏰ {uploadedDate}
+                업로드 시각{uploadedDate}
               </p>
             </div>
           );
