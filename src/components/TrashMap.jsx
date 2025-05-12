@@ -60,7 +60,7 @@ function TrashMap({ areaId }) {
   zoom={15}
   onLoad={(mapInstance) => {
     setMap(mapInstance);
-    mapInstance.panTo(defaultCenter); // ✅ 처음에만 이동
+    mapInstance.panTo(defaultCenter); // 
   }}
 >
   {userLocation && (

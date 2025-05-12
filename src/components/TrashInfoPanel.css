@@ -48,7 +48,7 @@
     object-fit: cover;
   }
   
-  /* 모바일 대응 */
+  
   @media (max-width: 768px) {
     .trash-info-panel {
       position: fixed;

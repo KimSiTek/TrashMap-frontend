@@ -9,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/map" element={<MapPage />} />
         <Route path ="/" element = {<HomePage />} />
+        <Route path="/admin" element = {<AdminPannel/>} />
       </Routes>
     </BrowserRouter>
   );
