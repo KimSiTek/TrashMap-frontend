@@ -43,11 +43,14 @@ function TrashInfoPanel({ bin, onClose }) {
       <p><strong>설명:</strong> {bin.description || '없음'}</p>
       <h2>{bin.name}</h2>
 
-      {/* ✅ 정적 이미지 표시 (public/images/bin1.jpg 등) */}
       <img
         src={`/images/${bin.id}.jpg`}
         alt="쓰레기통 초기 상태"
-        style={{ maxWidth: '100%' }}
+        style={{ 
+          width : '200px',
+          height: 'auto',
+          borderRadius: '8px'
+        }}
         onError={(e) => {
           e.target.style.display = 'none';
         }}
