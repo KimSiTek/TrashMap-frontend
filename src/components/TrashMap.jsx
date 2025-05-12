@@ -32,7 +32,7 @@ function TrashMap({ areaId }) {
   //   setMap(mapInstance);
   // };
 
-  // const defaultCenter = { lat: 37.3898, lng: 126.9595 };
+  const defaultCenter = { lat: 37.3898, lng: 126.9595 };
 
   return (
     <>
