@@ -17,12 +17,9 @@ export default function AdminPanel() {
       <h2>신고된 사진 목록</h2>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
 
-      {images.map((item, idx) => {
-  console.log("🧾 서버 응답 항목:", item); // ✅ 여기!
-
-  const filename = item.image_path.replace(/^\/?uploads\//, "");
+        {images.map((item, idx) => {
+  const filename = item.imagePath.replace(/^\/?uploads\//, "");
   const imageUrl = `https://trashmap-backend-production.up.railway.app/api/files/${filename}`;
-
   return (
     <div key={idx} style={{ width: "220px" }}>
       <img
@@ -36,15 +33,15 @@ export default function AdminPanel() {
         }}
       />
       <p style={{ fontSize: "14px", margin: "6px 0 2px 0" }}>
-        🗑️ <strong>{item.trash_bin_name}</strong>
+        🗑️ <strong>{item.trashBinName}</strong>
       </p>
       <p style={{ fontSize: "13px", color: "#555" }}>
-        ⏰ {item.uploaded_at}
+        ⏰ {item.uploadedAt}
       </p>
+
     </div>
   );
 })}
-
 
       </div>
     </div>
