@@ -49,9 +49,10 @@ function TrashMap({ areaId }) {
         <GoogleMap
           mapContainerStyle={containerStyle}
           zoom={15}
+          center={defaultCenter}
           onLoad={(mapInstance) => {
             setMap(mapInstance);
-            mapInstance.panTo(defaultCenter);
+            // mapInstance.panTo(defaultCenter);
           }}
         >
           {userLocation && (
