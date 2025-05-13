@@ -58,11 +58,21 @@ function TrashMap({ areaId }) {
   return (
     <>
       {/* ✅ 피드백 버튼 */}
-      <div style={{ textAlign: 'right', margin: '1rem' }}>
-        <button onClick={() => navigate('/feedback')}>
-          피드백 작성
-        </button>
-      </div>
+      {/* ✅ 좌우 버튼 정렬 */}
+<div style={{
+  display: 'flex',
+  justifyContent: 'space-between',
+  padding: '1rem',
+}}>
+  <button onClick={() => navigate('/info')}>
+    사용법
+  </button>
+
+  <button onClick={() => navigate('/feedback')}>
+    피드백 작성
+  </button>
+</div>
+
 
       <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
         <GoogleMap
