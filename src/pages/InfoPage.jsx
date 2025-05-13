@@ -31,7 +31,7 @@ function InfoPage() {
       }}>
         <button onClick={() => navigate(-1)}>돌아가기</button>
         <button onClick={() => navigate('/value')}
-                style = {{marginRight: '1rem'}}>
+                style = {{marginRight: '2rem'}}>
                     지키고 싶은 가치</button>
       </div>
     </div>
