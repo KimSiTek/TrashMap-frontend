@@ -28,7 +28,7 @@ function InfoPage() {
           fontSize: '1rem',
         }}
       >
-        ⬅ 돌아가기
+        돌아가기
       </button>
     </div>
   );

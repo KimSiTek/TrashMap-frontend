@@ -12,7 +12,7 @@ function MapPage() {
 
   return (
     <div>
-      <h2> Where is it? </h2>
+      <h2> 평촌 중앙공원 쓰레기 지도 </h2>
       <TrashMap areaId={areaId} />
     </div>
   );
