@@ -17,20 +17,20 @@ function TrashMap({ areaId }) {
   const [selectedBin, setSelectedBin] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false); // ✅ 추가
 
-  // useEffect(() => {
-  //   fetchTrashBins().then((data) => {
-  //     console.log("가져온 쓰레기통 목록:", data);
-  //     setBins(data);
-  //   });
+  useEffect(() => {
+    fetchTrashBins().then((data) => {
+      console.log("가져온 쓰레기통 목록:", data);
+      setBins(data);
+    });
 
-  //   return () => {
-  //     // navigator.geolocation.clearWatch(watchId);
-  //   };
-  // }, [map, areaId]);
+    return () => {
+      // navigator.geolocation.clearWatch(watchId);
+    };
+  }, [map, areaId]);
 
-  // const handleMapLoad = (mapInstance) => {
-  //   setMap(mapInstance);
-  // };
+  const handleMapLoad = (mapInstance) => {
+    setMap(mapInstance);
+  };
 
   const defaultCenter = { lat: 37.3898, lng: 126.9595 };
 
