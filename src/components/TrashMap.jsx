@@ -25,6 +25,25 @@ function TrashMap({ areaId }) {
       setBins(data);
     });
 
+    useEffect(() => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setUserLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+        },
+        (err) => {
+          console.error('위치 가져오기 실패:', err);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 0,
+        }
+      );
+    }, []);
+      
     return () => {
       // navigator.geolocation.clearWatch(watchId);
     };
