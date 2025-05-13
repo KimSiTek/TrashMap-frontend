@@ -11,7 +11,7 @@ function InfoPage() {
 
   return (
     <div style={{ padding: '2rem', maxWidth: '800px', margin: 'auto' }}>
-      <h1>TrashMap 사용법 안내</h1>
+      <h2>TrashMap 사용법 안내</h2>
       <ul style={{ lineHeight: '2' }}>
         <li>서비스를 실행하면, 구글맵과 현재위치가 뜹니다.</li>
         <li>쓰레기통의 위치와 상태를 지도로 확인할 수 있습니다.</li>
