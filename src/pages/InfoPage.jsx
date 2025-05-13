@@ -13,7 +13,7 @@ function InfoPage() {
     <div style={{ padding: '2rem', maxWidth: '800px', margin: 'auto' }}>
       <h1>TrashMap 사용법 안내</h1>
       <ul style={{ lineHeight: '2' }}>
-        <li>QR 코드를 스캔하거나 메인 페이지에서 위치 버튼을 누릅니다.</li>
+        <li>서비스를 실행하면, 구글맵과 현재위치가 뜹니다.</li>
         <li>쓰레기통의 위치와 상태를 지도로 확인할 수 있습니다.</li>
         <li>각 쓰레기통 마커를 클릭하면 상세 정보를 볼 수 있습니다.</li>
         <li>상태가 잘못된 경우 "쓰레기통 상태 신고" 버튼을 눌러 사진을 업로드할 수 있습니다.</li>

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { fetchTrashBins } from '../api/trashApi';
 import TrashInfoPanel from './TrashInfoPanel'; 
 import FeedbackForm from './FeedbackForm'; // ✅ 추가
+import { useNavigate } from 'react-router-dom';
 
 const containerStyle = {
   width: '100vw',
@@ -15,7 +16,8 @@ function TrashMap({ areaId }) {
   const [userLocation, setUserLocation] = useState(null);
   const [map, setMap] = useState(null);
   const [selectedBin, setSelectedBin] = useState(null);
-  const [showFeedback, setShowFeedback] = useState(false); // ✅ 추가
+  const [showFeedback, setShowFeedback] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchTrashBins().then((data) => {
@@ -38,8 +40,8 @@ function TrashMap({ areaId }) {
     <>
       {/* ✅ 피드백 버튼 */}
       <div style={{ textAlign: 'right', margin: '1rem' }}>
-        <button onClick={() => setShowFeedback(!showFeedback)}>
-          {showFeedback ? '피드백 닫기' : '피드백 작성'}
+        <button onClick={() => navigate('/feedback')}>
+          피드백 작성
         </button>
       </div>
 

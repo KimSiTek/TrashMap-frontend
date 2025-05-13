@@ -15,8 +15,8 @@ function HomePage() {
   return (
     <div style={{ padding: '2rem' }}>
       <button onClick={handleHowToUse}>사용법</button> {/* 그냥 아무데나 추가 */}
-      <h1>Trash Map</h1>
-      <button onClick={handleClick}>Garbage Location</button>
+      <h1>쓰레기 지도</h1>
+      <button onClick={handleClick}>바로가기</button>
     </div>
   );
 }

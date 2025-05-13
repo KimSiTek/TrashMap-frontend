@@ -4,6 +4,7 @@ import MapPage from './pages/MapPage';
 import HomePage from './pages/HomePage';
 import AdminPanel from './components/AdminPanel';
 import InfoPage from './pages/InfoPage';
+import FeedbackForm from './components/FeedbackForm';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path ="/" element = {<HomePage />} />
         <Route path="/admin" element = {<AdminPanel/>} />
         <Route path="/info" element={<InfoPage />} />
+        <Route path="/feedback" element = {<FeedbackForm />} />
       </Routes>
     </BrowserRouter>
   );
