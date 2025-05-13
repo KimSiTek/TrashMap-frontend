@@ -20,10 +20,10 @@ function FeedbackForm() {
       console.error(err);
     }
   };
-  
+
   return (
     <div style={{ marginTop: '3rem', padding: '1rem', borderTop: '1px solid #ccc' }}>
-      <h3>📝 피드백 작성</h3>
+      <h3>피드백 작성</h3>
       <textarea
         rows="4"
         value={message}
