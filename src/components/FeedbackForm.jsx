@@ -33,7 +33,7 @@ function FeedbackForm() {
       />
       <br />
       <button onClick={handleSubmit} style={{ marginTop: '1rem' }}>제출</button>
-      {submitted && <p style={{ color: 'green', marginTop: '1rem' }}>✅ 감사합니다! 피드백이 제출되었습니다.</p>}
+      {submitted && <p style={{ color: 'green', marginTop: '1rem' }}>감사합니다! 피드백이 제출되었습니다.</p>}
     </div>
   );
 }
