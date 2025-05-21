@@ -12,7 +12,7 @@ function MapPage() {
 
   return (
     <div>
-      <h2 style = {{ textAlign: 'center', margineTop: '1rem'}}> 평촌 중앙공원 쓰레기 지도 </h2>
+      <h2 style = {{ textAlign: 'center', margineTop: '1rem'}}> 평촌 중앙공원 TrashMap </h2>
       <TrashMap areaId={areaId} />
     </div>
   );

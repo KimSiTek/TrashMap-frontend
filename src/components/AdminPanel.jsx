@@ -18,7 +18,7 @@ export default function AdminPanel() {
       <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
 
         {images.map((item, idx) => {
-          console.log("🧾 서버 응답 항목:", item); // ✅ 여기!
+          console.log("서버 응답 항목:", item); 
           const filename = item.imagePath.replace(/^\/?uploads\//, "");
           const imageUrl = `https://trashmap-backend-production.up.railway.app/api/files/${filename}`;
           return (

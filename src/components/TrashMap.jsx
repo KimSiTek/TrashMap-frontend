@@ -3,7 +3,7 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import { useState, useEffect } from 'react';
 import { fetchTrashBins } from '../api/trashApi';
 import TrashInfoPanel from './TrashInfoPanel'; 
-import FeedbackForm from './FeedbackForm'; // ✅ 추가
+import FeedbackForm from './FeedbackForm'; 
 import { useNavigate } from 'react-router-dom';
 
 const containerStyle = {
@@ -57,8 +57,6 @@ function TrashMap({ areaId }) {
 
   return (
     <>
-      {/* ✅ 피드백 버튼 */}
-      {/* ✅ 좌우 버튼 정렬 */}
 <div style={{
   display: 'flex',
   justifyContent: 'space-between',
@@ -110,7 +108,7 @@ function TrashMap({ areaId }) {
         <TrashInfoPanel bin={selectedBin} onClose={() => setSelectedBin(null)} />
       )}
 
-      {/* ✅ 피드백 폼 표시 */}
+  
       {showFeedback && <FeedbackForm />}
     </>
   );

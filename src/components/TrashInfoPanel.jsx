@@ -5,7 +5,7 @@ import axios from 'axios';
 function TrashInfoPanel({ bin, onClose }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [showUpload, setShowUpload] = useState(false);
-  const [uploadedImageUrl, setUploadedImageUrl] = useState(null); // 업로드 후 미리보기용
+  const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
 
   const handleUpload = async () => {
     if (!selectedFile) {
@@ -23,7 +23,7 @@ function TrashInfoPanel({ bin, onClose }) {
         formData
       );
 
-      const filename = res.data; // UUID_파일이름.jpg
+      const filename = res.data; 
       const imageUrl = `https://trashmap-backend-production.up.railway.app/api/files/${filename}`;
       setUploadedImageUrl(imageUrl);
       alert('업로드 성공');

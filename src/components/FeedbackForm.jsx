@@ -1,4 +1,4 @@
-// src/components/FeedbackForm.jsx
+
 import { useState } from 'react';
 import axios from 'axios';
 
@@ -14,7 +14,7 @@ function FeedbackForm() {
         message,
       });
       setSubmitted(true);
-      setMessage(''); // 제출 후 초기화
+      setMessage('');
     } catch (err) {
       alert('제출에 실패했습니다.');
       console.error(err);
